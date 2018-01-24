@@ -23,6 +23,8 @@ const api = (function() {
   }
   
   function updateItem(id, updateData, callback){
+    // const stringy = JSON.stringify(updateData);
+    // console.log(stringy);
     $.ajax({
       url: `${BASE_URL}/items/${id}`,
       method: 'PATCH',

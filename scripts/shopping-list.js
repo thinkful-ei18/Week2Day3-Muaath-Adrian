@@ -1,4 +1,4 @@
-/* global store */
+/* global store api */
 
 // eslint-disable-next-line no-unused-vars
 
@@ -83,7 +83,11 @@ const shoppingList = (function(){
   function handleItemCheckClicked() {
     $('.js-shopping-list').on('click', '.js-item-toggle', event => {
       const id = getItemIdFromElement(event.currentTarget);
-      store.findAndToggleChecked(id);
+      const item = store.findById(id);
+      api.updateItem(id, { checked: !item.checked }, () => {
+        store.findAndUpdate(id, { checked: !item.checked });
+        render();
+      });
       render();
     });
   }
@@ -105,8 +109,20 @@ const shoppingList = (function(){
       event.preventDefault();
       const id = getItemIdFromElement(event.currentTarget);
       const itemName = $(event.currentTarget).find('.shopping-item').val();
-      console.log(itemName);
-      store.findAndUpdate(id, itemName);
+      // console.log(itemName);
+      api.updateItem(id, { name: itemName }, () => {
+        store.findAndUpdate(id, { name: itemName });
+        render();
+      });
+
+      // promise example
+      // api.updateItem(id, { name: itemName }) 
+      //   .then( () => { store.findAndUpdate(id, { name: itemName }); render(); }) 
+      //   .catch(() => console.log('this is an error!'));
+
+
+      // console.log(itemName);
+      // store.findAndUpdate(id, itemName);
       render();
     });
   }

@@ -7,7 +7,7 @@
 const store = (function(){
   const addItem = function(item) {
     this.items.push(item);
-    console.log(`Added ${item} locally!`);
+    // console.log(`Added ${item} locally!`);
   };
 
   const findById = function(id) {
@@ -33,10 +33,10 @@ const store = (function(){
   //   }
   // };
 
-  function findAndUpdate(id, newData) {
+  function findAndUpdate(id, updatedItem) {
     const foundItem = this.findById(id);
-    console.log(foundItem);
-    Object.assign(foundItem, {name: newData});
+    // console.log(foundItem);
+    Object.assign(foundItem, updatedItem);
 
   }
 
