@@ -15,10 +15,8 @@ const api = (function () {
       method: 'POST',
       contentType: 'application/json',
       data: newItem,
-      success: (apiResponse) => {
-        callback(apiResponse);
-      }
-    });
+      success: callback
+      });
     console.log(`Added ${newItem} to database!`);
     // shoppingList.render();
 
