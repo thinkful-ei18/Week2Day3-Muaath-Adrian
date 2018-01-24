@@ -15,8 +15,8 @@ const api = (function () {
       method: 'POST',
       contentType: 'application/json',
       data: newItem,
-      success: (callback) => {
-        console.log(callback);
+      success: (apiResponse) => {
+        callback(apiResponse);
       }
     });
     console.log(`Added ${newItem} to database!`);
