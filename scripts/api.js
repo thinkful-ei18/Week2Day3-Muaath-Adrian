@@ -5,7 +5,7 @@
 const api = (function () {
   const BASE_URL = 'https://thinkful-list-api.herokuapp.com/[Mo-Adrian]';
   function getItems(callback){
-    // $.getJSON(`${BASE_URL}/items`, callback);
+    $.getJSON(`${BASE_URL}/items`, callback);
 
   }
   function createItem(name, callback){
@@ -19,7 +19,9 @@ const api = (function () {
         console.log(callback);
       }
     });
-    
+    console.log(`Added ${newItem} to database!`);
+    // shoppingList.render();
+
 
   }
   return {
